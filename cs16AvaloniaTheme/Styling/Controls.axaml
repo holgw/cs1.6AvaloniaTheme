@@ -1,0 +1,18 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">	
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<MergeResourceInclude Source="/Styling/ControlThemes/ButtonStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/CheckBoxStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/TextBoxStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/ComboBoxStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/ComboBoxItemStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/RadioButtonStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/DataGrid/DataGridColumnHeaderStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/DataGrid/DataGridRowStyles.axaml" />
+				<MergeResourceInclude Source="/Styling/ControlThemes/DataGrid/DataGridCellStyles.axaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Styles.Resources>
+</Styles>

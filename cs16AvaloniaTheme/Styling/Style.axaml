@@ -1,0 +1,76 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--DATAGRID-->
+	<Style Selector="DataGrid">
+		<Setter Property="BorderThickness" Value="1"></Setter>
+		<Setter Property="BorderBrush" Value="Gray"></Setter>
+		<Setter Property="GridLinesVisibility" Value="All"></Setter>
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}"></Setter>
+	</Style>
+
+	<!--BORDER-->
+	<Style Selector="Border.Default">
+		<Setter Property="Height" Value="27"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="CornerRadius" Value="0"/>
+		<Setter Property="Margin" Value="0"/>
+	</Style>
+
+	<Style Selector="Border.RightUpper">
+		<Setter Property="BorderThickness" Value="1 1 0 0"/>
+	</Style>
+
+	<Style Selector="Border.LeftBottom">
+		<Setter Property="BorderThickness" Value="0 0 1 1"/>
+	</Style>
+
+	<Style Selector="Border.Dark">
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderDarkBrush}"/>
+	</Style>
+
+	<Style Selector="Border.Light">
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderLightBrush}"/>
+		<Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}"/>
+	</Style>
+	<!--BORDER-->
+
+	<!--LABEL-->
+	<Style Selector="Label">
+		<Setter Property="FontFamily" Value="{DynamicResource Gohu}"/>
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="Margin" Value="0"/>
+	</Style>
+
+	<Style Selector="Label.H1">
+		<Setter Property="FontSize" Value="48"/>
+		<Setter Property="Margin" Value="0 0 0 0"/>
+	</Style>
+
+	<Style Selector="Label.H2">
+		<Setter Property="FontSize" Value="24"/>
+		<Setter Property="Margin" Value="0 16 0 0"/>
+	</Style>
+	<!--LABEL-->
+
+	<!--TEXT BLOCK-->
+	<Style Selector="TextBlock">
+		<Setter Property="FontFamily" Value="{DynamicResource Gohu}"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="Margin" Value="0,3,0,0"/>
+		<Setter Property="Padding" Value="4"/>
+	</Style>
+
+	<Style Selector="TextBlock.Default">
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+	</Style>
+
+	<Style Selector="TextBlock.ButtonText">
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
+
+	<StyleInclude Source="/Styling/Controls.axaml" />
+	<StyleInclude Source="/Styling/ControlsResources.axaml" />
+
+</Styles>

@@ -1,0 +1,115 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTheme TargetType="ComboBox" x:Key="{x:Type ComboBox}">
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="MaxDropDownHeight" Value="504" />
+		<Setter Property="Foreground" Value="{DynamicResource AccentBrush}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="CornerRadius" Value="0" />
+		<Setter Property="PlaceholderForeground" Value="{DynamicResource Text3Brush}" />
+		
+		<Setter Property="Template">
+			<ControlTemplate>
+				<DataValidationErrors>
+					<Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*,32">
+
+						<Border x:Name="Background"
+								Height="27"
+								Grid.Row="1"
+								Grid.Column="0"
+								Grid.ColumnSpan="2"
+								CornerRadius="0"
+								BorderThickness="1 1 0 0"
+								BorderBrush="{DynamicResource BorderDarkBrush}"
+								Background="{DynamicResource SecondaryBackgroundBrush}">
+							<Border Name="NormalRectangleInner"
+								Background="{TemplateBinding Background}"
+								BorderThickness="0 0 1 1"
+								BorderBrush="{DynamicResource BorderLightBrush}">
+							</Border>
+						</Border>
+
+						<TextBlock x:Name="PlaceholderTextBlock"
+							Grid.Row="1"
+							Grid.Column="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Center"
+							Margin="{TemplateBinding Padding}"
+							Text="{TemplateBinding PlaceholderText}"
+							Foreground="{TemplateBinding PlaceholderForeground}"
+							IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+
+						<ContentControl x:Name="ContentPresenter"
+										Content="{TemplateBinding SelectionBoxItem}"
+										ContentTemplate="{TemplateBinding ItemTemplate}"
+										Grid.Row="1"
+										Grid.Column="0"
+										Margin="0"
+										HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+										VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+						<Label Name="DropDownGlyph"
+							   FontSize="20"
+							   IsHitTestVisible="False"
+							   Grid.Row="1" Grid.Column="1"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center">&#xeb6e;</Label>
+
+						<Popup Name="PART_Popup"
+							   WindowManagerAddShadowHint="False"
+							   IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+							   MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+							   MaxHeight="{TemplateBinding MaxDropDownHeight}"
+							   PlacementTarget="Background"
+							   IsLightDismissEnabled="True"
+							   InheritsTransform="True">
+
+							<Border Name="PopupRectangle"
+								UseLayoutRounding="False"
+								CornerRadius="0"
+								BorderThickness="1 1 0 0"
+								BorderBrush="{DynamicResource BorderLightBrush}"
+								Background="{DynamicResource BackgroundBrush}">
+								<Border Name="PopupRectangleInner"
+										Background="Transparent"
+										BorderThickness="0 0 1 1"
+										BorderBrush="{DynamicResource BorderDarkBrush}">
+
+									<ScrollViewer
+										HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+										VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+										<ItemsPresenter Name="PART_ItemsPresenter"
+														Margin="{DynamicResource ComboBoxDropdownContentMargin}"
+														ItemsPanel="{TemplateBinding ItemsPanel}" />
+									</ScrollViewer>
+								</Border>
+							</Border>
+
+
+						</Popup>
+					</Grid>
+				</DataValidationErrors>
+			</ControlTemplate>
+		</Setter>
+
+		<Style Selector="^:disabled">
+			<Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
+				<Setter Property="Foreground" Value="{DynamicResource ThirdBackgroundBrush}" />
+			</Style>
+			<Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+				<Setter Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}" />
+			</Style>
+			<Style Selector="^ /template/ Border#Background">
+				<Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+			</Style>
+			<Style Selector="^ /template/ Label#DropDownGlyph">
+				<Setter Property="Foreground" Value="{DynamicResource ThirdBackgroundBrush}"/>
+			</Style>
+		</Style>
+	</ControlTheme>
+	
+</ResourceDictionary>

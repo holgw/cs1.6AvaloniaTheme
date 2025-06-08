@@ -1,0 +1,94 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Padding" Value="4" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+	
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="Root"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}"
+					CornerRadius="0">
+
+					<Grid ColumnDefinitions="Auto,*">
+						<Grid Grid.Column="0" VerticalAlignment="Center" Height="{DynamicResource RowHeight}">
+							<Border Name="NormalRectangle"
+								UseLayoutRounding="False"
+								Height="18"
+								Width="18"
+								CornerRadius="0"
+								BorderThickness="1 1 0 0"
+								BorderBrush="{DynamicResource BorderDarkBrush}"
+								Background="{DynamicResource SecondaryBackgroundBrush}">
+								<Border Name="NormalRectangleInner"
+									Background="Transparent"
+									BorderThickness="0 0 1 1"
+									BorderBrush="{DynamicResource BorderLightBrush}">
+								</Border>
+							</Border>
+
+							<Label Name="CheckGlyph" 
+								FontSize="20" 
+								Opacity="0" 
+								VerticalAlignment="Center" 
+								HorizontalAlignment="Center">&#xf00c;</Label>
+						</Grid>
+
+						<ContentPresenter Name="ContentPresenter"
+							Grid.Column="1"
+							ContentTemplate="{TemplateBinding ContentTemplate}"
+							Content="{TemplateBinding Content}"
+							Margin="{TemplateBinding Padding}"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Center"
+							Foreground="{TemplateBinding Foreground}"/>
+					</Grid>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+
+		<Style Selector="^:checked">
+			<Style Selector="^ /template/ Label#CheckGlyph">
+				<Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+
+			<Style Selector="^:disabled /template/ ContentPresenter#ContentPresenter">
+				<Setter Property="Foreground" Value="{DynamicResource CheckBoxForegroundCheckedDisabled}" />
+			</Style>
+			<Style Selector="^:disabled /template/ Border#Root">
+				<Setter Property="Background" Value="{DynamicResource CheckBoxBackgroundCheckedDisabled}" />
+				<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxBorderBrushCheckedDisabled}" />
+			</Style>
+			<Style Selector="^:disabled /template/ Border#NormalRectangle">
+				<Setter Property="Background" Value="{DynamicResource CheckBoxCheckBackgroundFillCheckedDisabled}"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckBackgroundStrokeCheckedDisabled}" />
+			</Style>
+			<Style Selector="^:disabled /template/ Label#CheckGlyph">
+				<Setter Property="Foreground" Value="{DynamicResource CheckBoxCheckGlyphForegroundCheckedDisabled}"/>
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+		</Style>
+
+		<Style Selector="^:disabled">
+			<Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+				<Setter Property="Foreground" Value="{DynamicResource ThirdBackgroundBrush}" />					
+			</Style>
+			<Style Selector="^ /template/ Border#NormalRectangle">
+				<Setter Property="BorderBrush" Value="{DynamicResource BorderDarkBrush}"/>
+				<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+			</Style>
+			<Style Selector="^ /template/ Label#CheckGlyph">
+				<Setter Property="Foreground" Value="{DynamicResource FadeAccentBrush}" />
+			</Style>
+		</Style>
+			
+	</ControlTheme>
+</ResourceDictionary>

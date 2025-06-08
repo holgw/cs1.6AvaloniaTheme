@@ -5,12 +5,110 @@
              xmlns:vm="clr-namespace:cs16AvaloniaTheme.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="cs16AvaloniaTheme.Views.MainView"
-             x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+             x:DataType="vm:MainViewModel"
+			 Background="{DynamicResource BackgroundBrush}">
+	<Design.DataContext>
+	<!-- This only sets the DataContext for the previewer in an IDE,
+			to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+	<vm:MainViewModel />
+	</Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid RowDefinitions="Auto, Auto" Margin="20">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="340" Width="*"/>
+			<ColumnDefinition MinWidth="340" Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Label Classes="H1" Grid.Column="0" Grid.Row="0">cs16.xaml</Label>
+
+		<StackPanel  Grid.Column="0" Grid.Row="1" Margin="10" Spacing="0">
+
+			<Label Classes="H2">TextBlock</Label>
+			<TextBlock Classes="Default">The quick brown fox jumps over the lazy dog</TextBlock>
+			<TextBlock Foreground="{DynamicResource Text3Brush}">The quick brown fox jumps over the lazy dog</TextBlock>
+			<TextBlock Foreground="{DynamicResource AccentBrush}">The quick brown fox jumps over the lazy dog</TextBlock>
+
+			<Label Classes="H2">TextBox</Label>
+			<Grid ColumnDefinitions="*, *">
+				<TextBox Grid.Column="0" Margin="0 0 4 0">Enabled TextBox</TextBox>
+				<TextBox Grid.Column="1" IsEnabled="False" Margin="4 0 0 0">Disabled TextBox</TextBox>
+			</Grid>
+			<TextBox
+				Margin="0 8 0 0"
+				Height="154"
+				VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch"
+				AcceptsReturn="True"
+				TextWrapping="Wrap">
+				Lorem ipsum dolor sit amet tempor. No rebum in kasd sanctus magna.
+				Invidunt vero consetetur velit magna et amet sit consetetur magna at.
+				Kasd autem elitr sed luptatum clita eros option in ut et erat id at dolor minim vero dolor sanctus.
+				Sit amet voluptua delenit magna tation sanctus te. Et te et blandit.
+				Elitr diam et hendrerit stet consequat labore et.
+				Iriure kasd adipiscing commodo diam nonumy vulputate duo accusam.
+				Autem sed diam luptatum voluptua accusam dolor luptatum gubergren diam duo sed at eirmod dolor.
+				Augue eu duis kasd magna sanctus aliquip sea eos sed sanctus aliquyam dolor sit gubergren dolores.
+			</TextBox>
+
+			<Label Classes="H2">Buttons</Label>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<Button Width="154">Enabled Button</Button>
+				<Button Width="154" IsEnabled="False">Disabled Button</Button>
+			</StackPanel>
+
+			<Label Classes="H2">CheckBoxes</Label>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<CheckBox Width="154" IsChecked="True">Checked</CheckBox>
+				<CheckBox Width="154">Unchecked</CheckBox>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<CheckBox Width="154" IsChecked="True" IsEnabled="False">Disabled Checked</CheckBox>
+				<CheckBox Width="154" IsEnabled="False">Disabled Unchecked</CheckBox>
+			</StackPanel>
+
+			<Label Classes="H2">RadioButtons</Label>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<RadioButton Width="154" IsChecked="True">Checked</RadioButton>
+				<RadioButton Width="154">Unchecked</RadioButton>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<RadioButton Width="154" IsChecked="True" IsEnabled="False">Disabled Checked</RadioButton>
+				<RadioButton Width="154" IsEnabled="False">Disabled Unchecked</RadioButton>
+			</StackPanel>
+
+			<Label Classes="H2">ComboBoxes</Label>
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<ComboBox Width="154" PlaceholderText="Choose One" HorizontalAlignment="Stretch">
+					<ComboBoxItem>Bird</ComboBoxItem>
+					<ComboBoxItem>Dog</ComboBoxItem>
+					<ComboBoxItem>Cat</ComboBoxItem>
+				</ComboBox>
+				<ComboBox IsEnabled="False" Width="154" PlaceholderText="Choose One" HorizontalAlignment="Stretch">
+					<ComboBoxItem>Bird</ComboBoxItem>
+					<ComboBoxItem>Dog</ComboBoxItem>
+					<ComboBoxItem>Cat</ComboBoxItem>
+				</ComboBox>
+			</StackPanel>
+
+		</StackPanel>
+
+		<StackPanel Grid.Column="1" Grid.Row="1" Margin="10" Spacing="0">
+			<Label Classes="H2">DataGrid</Label>
+			<Border BorderThickness="1" BorderBrush="{DynamicResource SecondaryBackgroundBrush}" Padding="-1">
+				<DataGrid Name="MainDataGrid"
+					BorderThickness="0"
+					BorderBrush="{DynamicResource SecondaryBackgroundBrush}"
+					GridLinesVisibility="All"
+					ItemsSource="{Binding Items}"
+					IsReadOnly="True"
+					AutoGenerateColumns="False"
+					RowHeight="24">
+
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Id" Binding="{Binding Id, DataType={x:Type vm:ItemView}}"/>
+						<DataGridTextColumn Header="Name" Binding="{Binding Name, DataType={x:Type vm:ItemView}}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Border>
+		</StackPanel>
+	</Grid>
 </UserControl>

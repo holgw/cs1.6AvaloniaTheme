@@ -1,0 +1,94 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTheme TargetType="TextBox" x:Key="{x:Type TextBox}">
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+		<Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+		<Setter Property="CaretBrush" Value="{DynamicResource AccentBrush}" />
+		<Setter Property="SelectionBrush" Value="{DynamicResource FadeAccentBrush}" />
+		<Setter Property="SelectionForegroundBrush" Value="{DynamicResource TextBrush}" />
+		<Setter Property="FontFamily" Value="{DynamicResource Gohu}"/>
+		<Setter Property="FontSize" Value="{DynamicResource MainFontSize}" />
+		<Setter Property="MinHeight" Value="{DynamicResource RowHeight}" />
+		<Setter Property="Padding" Value="4 8 4 4" />
+		<Setter Property="FocusAdorner" Value="{x:Null}" />
+		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+		
+		<Setter Property="Template">
+			<ControlTemplate>
+				<DataValidationErrors>
+					<Panel>
+						<Border Name="PART_BorderElement"
+							BorderThickness="1 1 0 0"
+							BorderBrush="{DynamicResource BorderDarkBrush}"
+							Background="Transparent">
+							<Border Name="PART_BorderSecondElement"
+								Background="{TemplateBinding Background}"
+								BorderThickness="0 0 1 1"
+								BorderBrush="{DynamicResource BorderLightBrush}">
+							</Border>
+						</Border>
+							
+						<Border Margin="{TemplateBinding BorderThickness}">
+							<Grid ColumnDefinitions="Auto,*,Auto" >
+								<ContentPresenter Grid.Column="0"
+									Grid.ColumnSpan="1"
+									Content="{TemplateBinding InnerLeftContent}"/>
+								<DockPanel x:Name="PART_InnerDockPanel"
+									Grid.Column="1"
+									Grid.ColumnSpan="1"
+									Cursor="IBeam"
+									Margin="{TemplateBinding Padding}">
+									<TextBlock Name="PART_FloatingWatermark"
+										Foreground="{DynamicResource SystemAccentColor}"
+										FontSize="{TemplateBinding FontSize}"
+										IsVisible="False"
+										Text="{TemplateBinding Watermark}"
+										DockPanel.Dock="Top" />
+									<ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+										VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+										IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+										AllowAutoHide="False">
+										<Panel>
+											<TextBlock Name="PART_Watermark"
+												Foreground="{DynamicResource TextControlPlaceholderForeground}"
+												Text="{TemplateBinding Watermark}"
+												TextAlignment="{TemplateBinding TextAlignment}"
+												TextWrapping="{TemplateBinding TextWrapping}"
+												IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+												HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+												VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+											<TextPresenter Name="PART_TextPresenter"
+												Text="{TemplateBinding Text, Mode=TwoWay}"
+												CaretIndex="{TemplateBinding CaretIndex}"
+												SelectionStart="{TemplateBinding SelectionStart}"
+												SelectionEnd="{TemplateBinding SelectionEnd}"
+												TextAlignment="{TemplateBinding TextAlignment}"
+												TextWrapping="{TemplateBinding TextWrapping}"
+												LineHeight="{TemplateBinding LineHeight}"
+												LetterSpacing="{TemplateBinding LetterSpacing}"
+												PasswordChar="{TemplateBinding PasswordChar}"
+												RevealPassword="{TemplateBinding RevealPassword}"
+												SelectionBrush="{TemplateBinding SelectionBrush}"
+												SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+												CaretBrush="{TemplateBinding CaretBrush}"
+												HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+												VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+										</Panel>
+									</ScrollViewer>
+								</DockPanel>
+								<ContentPresenter Grid.Column="2" Grid.ColumnSpan="1" Content="{TemplateBinding InnerRightContent}"/>
+							</Grid>
+						</Border>
+					</Panel>
+				</DataValidationErrors>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- Disabled State -->
+		<Style Selector="^:disabled">
+			<Setter Property="Foreground" Value="{DynamicResource ThirdBackgroundBrush}" />
+			<Style Selector="^ /template/ Border#PART_BorderSecondElement">
+				<Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+			</Style>
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>
