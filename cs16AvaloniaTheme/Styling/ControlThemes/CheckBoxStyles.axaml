@@ -35,7 +35,7 @@
 							</Border>
 
 							<Label Name="CheckGlyph" 
-								FontSize="20" 
+								FontSize="16" 
 								Opacity="0" 
 								VerticalAlignment="Center" 
 								HorizontalAlignment="Center">&#xf00c;</Label>
