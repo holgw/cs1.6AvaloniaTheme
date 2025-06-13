@@ -53,22 +53,22 @@
 		</Style>
 
 		<Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-			<Setter Property="Fill" Value="{DynamicResource DataGridRowHoveredBackgroundColor}" />
-			<Setter Property="Opacity" Value="{DynamicResource DataGridRowHoveredBackgroundColorOpacity}" />
+			<Setter Property="Fill" Value="{DynamicResource AccentBrush}" />
+			<Setter Property="Opacity" Value="{DynamicResource HoveredBackgroundColorOpacity}" />
 		</Style>
 
 		<Style Selector="^:selected">
 			<Style Selector="^ /template/ Rectangle#BackgroundRectangle">
-				<Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundBrush}" />
-				<Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundOpacity}" />
+				<Setter Property="Fill" Value="{DynamicResource AccentBrush}" />
+				<Setter Property="Opacity" Value="{DynamicResource SelectedBackgroundOpacity}" />
 			</Style>
 			<Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-				<Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundBrush}" />
-				<Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
+				<Setter Property="Fill" Value="{DynamicResource AccentBrush}" />
+				<Setter Property="Opacity" Value="{DynamicResource SelectedBackgroundOpacity}" />
 			</Style>
 			<Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
-				<Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedBackgroundBrush}" />
-				<Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedBackgroundOpacity}" />
+				<Setter Property="Fill" Value="{DynamicResource AccentBrush}" />
+				<Setter Property="Opacity" Value="{DynamicResource SelectedBackgroundOpacity}" />
 			</Style>
 			<Style Selector="^:pointerover:focus /template/ Rectangle#BackgroundRectangle">
 				<Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundBrush}" />

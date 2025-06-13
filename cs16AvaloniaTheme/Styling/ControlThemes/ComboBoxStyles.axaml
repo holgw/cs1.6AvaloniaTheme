@@ -10,7 +10,7 @@
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="CornerRadius" Value="0" />
-		<Setter Property="PlaceholderForeground" Value="{DynamicResource Text3Brush}" />
+		<Setter Property="PlaceholderForeground" Value="{DynamicResource FadeTextBrush}" />
 		
 		<Setter Property="Template">
 			<ControlTemplate>

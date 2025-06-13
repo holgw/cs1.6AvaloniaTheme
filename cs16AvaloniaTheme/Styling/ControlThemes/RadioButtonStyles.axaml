@@ -9,6 +9,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Top" />
 		<Setter Property="CornerRadius" Value="0" />
+		<Setter Property="Height" Value="{DynamicResource RowHeight}" />
 		
 		<Setter Property="Template">
 			<ControlTemplate>
@@ -18,7 +19,7 @@
 					BorderThickness="{TemplateBinding BorderThickness}">
 
 					<Grid ColumnDefinitions="20,*">
-						<Grid Grid.Column="0" VerticalAlignment="Top" Height="27">
+						<Grid Grid.Column="0" VerticalAlignment="Top" Height="{TemplateBinding Height}">
 							<Ellipse Name="OuterEllipse" Width="20"
 								Height="20" UseLayoutRounding="False"
 								Stroke="{DynamicResource RadioButtonOuterEllipseStroke}"
@@ -28,15 +29,15 @@
 							<!-- A seperate element is added since the two orthogonal state groups that cannot touch the same property -->
 							<Ellipse Name="CheckOuterEllipse" Width="20" Height="20"
 								UseLayoutRounding="False"
-								Stroke="{DynamicResource RadioButtonOuterEllipseCheckedStroke}"
+								Stroke="{DynamicResource RadioButtonOuterEllipse}"
 								Fill="{DynamicResource SecondaryBackgroundBrush}"
 								StrokeThickness="1"
 								Opacity="1" />
 
-							<Ellipse Name="CheckGlyph" Width="12" Height="12"
+							<Ellipse Name="CheckGlyph" Width="{DynamicResource MainFontSize}" Height="{DynamicResource MainFontSize}"
 								UseLayoutRounding="False"
 								Stroke="{DynamicResource RadioButtonCheckGlyphStroke}"
-								Fill="{DynamicResource RadioButtonCheckGlyphFill}"
+								Fill="{DynamicResource AccentBrush}"
 								Opacity="0"
 								RenderTransform="scaleX(0.70) scaleY(0.70)">
 								<Ellipse.Transitions>
@@ -49,8 +50,8 @@
 							<!-- A seperate element is added since the two orthogonal state groups that cannot touch the same property -->
 							<Border Name="PressedCheckGlyph" Width="4" Height="4" CornerRadius="6"
 								UseLayoutRounding="False"
-								BorderBrush="{DynamicResource RadioButtonOuterEllipseCheckedStroke}"
-								Background="{DynamicResource RadioButtonCheckGlyphFill}"
+								BorderBrush="{DynamicResource RadioButtonOuterEllipse}"
+								Background="{DynamicResource AccentBrush}"
 								Opacity="0"
 								RenderTransform="scaleX(0.86) scaleY(0.86)">
 								<Border.Transitions>

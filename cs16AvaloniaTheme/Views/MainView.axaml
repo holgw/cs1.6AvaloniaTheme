@@ -19,7 +19,7 @@
 			<StackPanel Spacing="0">
 				<Label Classes="H2">TextBlock</Label>
 				<TextBlock Classes="Default">The quick brown fox jumps over the lazy dog</TextBlock>
-				<TextBlock Foreground="{DynamicResource Text3Brush}">The quick brown fox jumps over the lazy dog</TextBlock>
+				<TextBlock Foreground="{DynamicResource FadeTextBrush}">The quick brown fox jumps over the lazy dog</TextBlock>
 				<TextBlock Foreground="{DynamicResource AccentBrush}">The quick brown fox jumps over the lazy dog</TextBlock>
 
 				<Label Classes="H2">TextBox</Label>

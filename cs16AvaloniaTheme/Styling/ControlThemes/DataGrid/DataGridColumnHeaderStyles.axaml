@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<ControlTheme x:Key="{x:Type DataGridColumnHeader}" TargetType="DataGridColumnHeader">
-		<Setter Property="Foreground" Value="{DynamicResource DataGridColumnHeaderForegroundBrush}" />
-		<Setter Property="Background" Value="{DynamicResource DataGridColumnHeaderBackgroundBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource FadeTextBrush}" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Focusable" Value="False" />
 		<Setter Property="Padding" Value="4,0,0,0" />
-		<Setter Property="FontSize" Value="12" />
-		<Setter Property="MinHeight" Value="27" />
+		<Setter Property="FontSize" Value="{DynamicResource MainFontSize}" />
+		<Setter Property="MinHeight" Value="{DynamicResource RowHeight}" />
 		
 		<Setter Property="Template">
 			<ControlTemplate>
