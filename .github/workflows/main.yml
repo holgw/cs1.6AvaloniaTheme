@@ -3,8 +3,10 @@ name: Deploy to GitHub Pages
 env:
   PROJECT_PATH: cs16AvaloniaTheme.Browser/cs16AvaloniaTheme.Browser.csproj
   OUTPUT_PATH: cs16AvaloniaTheme.Browser/bin/Release/net8.0-browser/publish/wwwroot
+
 on:
-  workflow_dispatch:
+  push:
+    branches: develop
 
 jobs:
   deploy-to-github-pages:
