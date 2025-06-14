@@ -31,10 +31,6 @@ jobs:
         with:
           branch: gh-pages
           folder: release/wwwroot
-       
-       # меняем '/' на '/BlazorGitHubPagesDemo/'
-      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-        run: sed -i 's/<base href="\/" \/>/<base href="\/cs16AvaloniaTheme.Browser\/" \/>/g' release/wwwroot/index.html
   
         # отключаем jekyll
       - name: Add .nojekyll file
