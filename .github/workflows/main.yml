@@ -10,29 +10,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # клонируем репозиторий на виртуальную машину
-    - uses: actions/checkout@v2
-    
-      # ставим нужный SDK (можно использовать и более старые)
-    - name: Setup .NET 9
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '9.0.x'
-        include-prerelease: true
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x  # Or a specific version like 9.0.100-preview.1
+      - name: Install WASM workload
+        run: dotnet workload install wasm-tools
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
         
       # генерируем статические файлы
-    - name: Publish .NET Core Project
-      run: dotnet publish cs16AvaloniaTheme.Browser/cs16AvaloniaTheme.Browser.csproj -c Release --output release --nologo
-
-    - name: Uploading files to gh-pages branch
-      uses: JamesIves/github-pages-deploy-action@4.1.4
-      with:
-        branch: gh-pages
-        folder: release/wwwroot
-     
-     # меняем '/' на '/BlazorGitHubPagesDemo/'
-    - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-      run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPagesDemo\/" \/>/g' release/wwwroot/index.html
-
-      # отключаем jekyll
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
+      - name: Publish .NET Core Project
+        run: dotnet publish cs16AvaloniaTheme.Browser/cs16AvaloniaTheme.Browser.csproj -c Release --output release --nologo
+  
+      - name: Uploading files to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: release/wwwroot
+       
+       # меняем '/' на '/BlazorGitHubPagesDemo/'
+      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
+        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPagesDemo\/" \/>/g' release/wwwroot/index.html
+  
+        # отключаем jekyll
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
