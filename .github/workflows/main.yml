@@ -12,9 +12,13 @@ jobs:
       # клонируем репозиторий на виртуальную машину
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v4       
         with:
           dotnet-version: 9.0.x  # Or a specific version like 9.0.100-preview.1
+      
+      - name: Create .nojekyll file
+        run: echo "" > .nojekyll  # This creates an empty .nojekyll file
+      
       - name: Install WASM workload
         run: dotnet workload install wasm-tools
       - name: Restore dependencies
@@ -31,7 +35,3 @@ jobs:
         with:
           branch: gh-pages
           folder: release/wwwroot
-  
-        # отключаем jekyll
-      - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
