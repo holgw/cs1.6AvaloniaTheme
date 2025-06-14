@@ -1,3 +1,5 @@
+![Header](/docs/header.png)
+
 ## ℹ️ About
 Loose adaptation of CS 1.6 UI for Avalonia.
 
